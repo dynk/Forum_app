@@ -13,6 +13,28 @@ async function post(req, res) {
 
 }
 
+async function get(req, res) {
+    try{
+        const response = await service.get();
+        return res.json(response);
+    }catch(e) {
+        return res.json(e);
+    }
+
+}
+
+async function getById(req, res) {
+    try{
+        const response = await service.getById(req);
+        return res.json(response);
+    }catch(e) {
+        return res.json(e);
+    }
+
+}
+
 module.exports = {
-    post
+    post,
+    get,
+    getById
 };
