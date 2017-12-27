@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const { UserSchema } = require('../models/users');
-const User = mongoose.model('User', UserSchema);
+const { UserSchema, UserModel } = require('../models/users');
+
 
 async function post(body){
     if(!body) throw 'Body is needed';
     if(!body.name) throw 'Name is needed';
 
-    const user = new User(body);
+    const user = new UserModel(body);
     try{
         await user.save();
         return user;
