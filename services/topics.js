@@ -26,11 +26,7 @@ async function get(req){
     let response;
     try{
         // response = await Topic.findOne({user: req.params.userId});
-        response = await Topic.findOne({user: req.params.userId}).populate('user').exec(function (err, story) {
-            if (err) return err;
-            console.log('The author is %s', story);
-            // prints "The author is Ian Fleming"
-          });;
+        response = await TopicModel.find({});
         return response;
     }catch(e){
         throw e;
@@ -43,7 +39,7 @@ async function getById(req){
     if(!id) throw 'Id is needed';
     let response;
     try{
-        response = await User.findOne({_id: id});
+        response = await TopicModel.findOne({_id: id});
         return response;
     }catch(e){
         throw e;
