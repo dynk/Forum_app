@@ -17,7 +17,15 @@ async function get(req, res) {
     }catch(e) {
         return res.json(e);
     }
+}
 
+async function getMesssage(req, res) {
+    try{
+        const response = await service.getMesssage(req);
+        return res.json(response);
+    }catch(e) {
+        return res.json(e);
+    }
 }
 
 async function getById(req, res) {
@@ -33,5 +41,6 @@ async function getById(req, res) {
 module.exports = {
     post,
     get,
-    getById
+    getById,
+    getMesssage
 };

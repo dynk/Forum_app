@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { TopicSchema, TopicModel } = require('../models/topics');
+const { MessageSchema, MessageModel } = require('../models/messages');
 
 
 async function post(req){
@@ -33,6 +34,21 @@ async function get(req){
     }
 }
 
+
+
+async function getMesssage(req){
+    if(!req.params) throw 'Params is not defined';
+    const { topicId } = req.params;
+    if(!topicId) throw 'Id is needed';
+    let response;
+    try{
+        response = await MessageModel.find({topic: topicId});
+        return response;
+    }catch(e){
+        throw e;
+    }
+}
+    
 async function getById(req){
     if(!req.params) throw 'Params is not defined';
     const { id } = req.params;
@@ -49,5 +65,6 @@ async function getById(req){
 module.exports = {
     post, 
     get,
+    getMesssage,
     getById
 }
