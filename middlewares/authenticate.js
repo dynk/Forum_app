@@ -6,4 +6,4 @@ function authenticate(req, res, next) {
         .then((user) => next())
         .catch((e) => res.status(401).json('Not authorized!'))
 }
-module.exports = {authenticate};
+module.exports = { authenticate };
