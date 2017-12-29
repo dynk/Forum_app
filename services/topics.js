@@ -42,7 +42,7 @@ async function getMesssage(req){
     if(!topicId) throw 'Id is needed';
     let response;
     try{
-        response = await MessageModel.find({topic: topicId});
+        response = await MessageModel.find({topic: topicId}).populate('user');
         return response;
     }catch(e){
         throw e;

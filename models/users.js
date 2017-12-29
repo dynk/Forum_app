@@ -29,7 +29,8 @@ const UserSchema = mongoose.Schema(
                 type: String,
                 required: true
             }
-        }]
+        }],
+        created: { type: Date, default: Date.now }
     }
 );
 

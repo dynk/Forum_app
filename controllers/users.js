@@ -4,7 +4,7 @@ const service = require('../services/users');
 async function post(req, res) {
     try{
         const response = await service.post(req.body);
-        return res.header('x-auth',response.token).json(response.user);
+        return res.header('x-auth',response.token).json(response);
     }catch(e) {
         return res.status(500).json(e);
     }
