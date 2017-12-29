@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { authenticate } = require('../middlewares/authenticate');
 const ctrl = require('../controllers/info');
 const usersCtrl = require('../controllers/users');
 const topicsCtrl = require('../controllers/topics');
@@ -9,7 +10,8 @@ router.get('/', ctrl.get);
 
 // users route
 router.post('/users', usersCtrl.post);
-router.get('/users', usersCtrl.get);
+router.post('/users/login', usersCtrl.login);
+router.get('/users',authenticate, usersCtrl.get);
 router.get('/users/:id', usersCtrl.getById);
 router.post('/users/:userId/topics', usersCtrl.postTopic);
 router.get('/users/:userId/topics', usersCtrl.getTopics);

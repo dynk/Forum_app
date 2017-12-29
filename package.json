@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/dynk/Forum_app#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "1.15.2",
+    "crypto-js": "^3.1.9-1",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.7",
     "nodemon": "^1.14.3",
-    "body-parser": "1.15.2"
+    "validator": "^9.2.0"
   }
 }

@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const { UserSchema, UserModel } = require('../models/users');
 const { TopicSchema, TopicModel } = require('../models/topics');
 const { MessageSchema, MessageModel } = require('../models/messages');
@@ -10,8 +9,24 @@ async function post(body){
 
     const user = new UserModel(body);
     await user.save();
-    return user;
+    const token = await user.generateAuthToken();
+    return {user, token};
 }
+
+async function login(body){
+    if(!body) throw 'Body is needed';
+    const {email, password} = body;
+    if(!email) throw 'Name is needed';
+    if(!password) throw 'Password is needed';
+
+    const user = await UserModel.findByCredentials(email,password);
+    const token = await user.generateAuthToken();
+    return {user, token};
+    // await user.save();
+    // const token = await user.generateAuthToken();
+    // return {user, token};
+}
+
 async function postTopic(req){
     if(!req.params) throw 'Params is needed';
     const { userId } = req.params;
@@ -87,6 +102,7 @@ async function getMessage(req){
 
 
 module.exports = {
+    login,
     post, 
     postTopic,
     postMessage,
