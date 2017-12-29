@@ -27,7 +27,7 @@ async function get(req){
     let response;
     try{
         // response = await Topic.findOne({user: req.params.userId});
-        response = await TopicModel.find({});
+        response = await TopicModel.find({}).populate('user');
         return response;
     }catch(e){
         throw e;

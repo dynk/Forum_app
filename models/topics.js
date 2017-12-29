@@ -7,7 +7,8 @@ const TopicSchema = mongoose.Schema(
             ref: 'User' 
         },
         title: String,
-        description: String
+        description: String,
+        created: { type: Date, default: Date.now }
     }
 );
 

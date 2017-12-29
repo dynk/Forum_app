@@ -11,7 +11,8 @@ const MessageSchema = mongoose.Schema(
             ref: 'Topic' 
         },
         title: String,
-        description: String
+        description: String,
+        created: { type: Date, default: Date.now }
     }
 );
 

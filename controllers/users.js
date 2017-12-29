@@ -13,7 +13,7 @@ async function post(req, res) {
 async function login(req, res) {
     try{
         const response = await service.login(req.body);
-        return res.header('x-auth',response.token).json(response.token);
+        return res.header('x-auth',response.token).json(response);
     }catch(e) {
         return res.status(500).json(e);
     }
