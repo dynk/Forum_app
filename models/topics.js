@@ -8,6 +8,7 @@ const TopicSchema = mongoose.Schema(
         },
         title: String,
         description: String,
+        tag: String,
         created: { type: Date, default: Date.now }
     }
 );

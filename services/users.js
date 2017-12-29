@@ -39,11 +39,14 @@ async function postTopic(req){
     const { userId } = req.params;
     const { body } = req;
     if(!body) throw 'Name is needed';
-
+    const {title, tag, description} = body;
+    if(!title) throw 'Title is needed';
 
     const topic = new TopicModel({
         user: userId,
-        title: body.title
+        title: title,
+        tag: tag,
+        description: description
     });
     await topic.save();
 
@@ -59,7 +62,6 @@ async function postMessage(req){
     const message = new MessageModel({
         user: userId,
         topic: topicId,
-        title: body.title,
         description: body.description
     });
     await message.save();

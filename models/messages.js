@@ -10,7 +10,6 @@ const MessageSchema = mongoose.Schema(
             type: Schema.Types.ObjectId, 
             ref: 'Topic' 
         },
-        title: String,
         description: String,
         created: { type: Date, default: Date.now }
     }
