@@ -12,18 +12,18 @@ router.get('/', ctrl.get);
 router.post('/users', usersCtrl.post);
 router.post('/users/login', usersCtrl.login);
 router.get('/users',authenticate, usersCtrl.get);
-router.get('/users/:id', usersCtrl.getById);
-router.post('/users/:userId/topics', usersCtrl.postTopic);
-router.get('/users/:userId/topics', usersCtrl.getTopics);
-router.get('/users/:userId/topics/:topicId', usersCtrl.getTopicsById);
-router.post('/users/:userId/topics/:topicId/messages', usersCtrl.postMessage);
-router.get('/users/:userId/topics/:topicId/messages', usersCtrl.getMessage);
+router.get('/users/:id', authenticate, usersCtrl.getById);
+router.post('/users/:userId/topics', authenticate, usersCtrl.postTopic);
+router.get('/users/:userId/topics', authenticate, usersCtrl.getTopics);
+router.get('/users/:userId/topics/:topicId', authenticate, usersCtrl.getTopicsById);
+router.post('/users/:userId/topics/:topicId/messages', authenticate, usersCtrl.postMessage);
+router.get('/users/:userId/topics/:topicId/messages', authenticate, usersCtrl.getMessage);
 
 
 // topics route
-router.get('/topics', topicsCtrl.get);
-router.get('/topics/:id', topicsCtrl.getById);
-router.get('/topics/:topicId/messages', topicsCtrl.getMesssage);
+router.get('/topics', authenticate, topicsCtrl.get);
+router.get('/topics/:id', authenticate, topicsCtrl.getById);
+router.get('/topics/:topicId/messages', authenticate, topicsCtrl.getMesssage);
 
 
 module.exports = router;

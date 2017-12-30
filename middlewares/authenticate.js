@@ -1,7 +1,9 @@
 const { UserModel } = require('../models/users');
 
 function authenticate(req, res, next) {
-    const token = req.header('x-auth');
+    const tokenHeader = req.header('x-auth');
+    let { token } = req.query
+    token = tokenHeader || token; 
     UserModel.findByToken(token)
         .then((user) => next())
         .catch((e) => res.status(401).json('Not authorized!'))
